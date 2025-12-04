@@ -1,26 +1,32 @@
-// swift-tools-version: 6.2
+// swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "SuccessFactors",
+    platforms: [
+        .iOS(.v12),
+        .macOS(.v10_14),
+        .tvOS(.v12),
+        .watchOS(.v5)
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "SuccessFactors",
             targets: ["SuccessFactors"]
-        ),
+        )
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "SuccessFactors"
+            name: "SuccessFactors",
+            path: "Sources/SuccessFactors"
         ),
         .testTarget(
             name: "SuccessFactorsTests",
-            dependencies: ["SuccessFactors"]
-        ),
-    ]
+            dependencies: ["SuccessFactors"],
+            path: "Tests/SuccessFactorsTests"
+        )
+    ],
+    swiftLanguageVersions: [.v5]
 )
